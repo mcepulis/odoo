@@ -1,0 +1,11 @@
+<odoo>
+    <record id="demo_project_1" model="custom.project.management">
+        <field name="name">Project Alpha</field>
+        <field name="description">This is the first project.</field>
+    </record>
+    <record id="demo_task_1" model="custom.task.management">
+        <field name="name">Task 1</field>
+        <field name="project_id" ref="demo_project_1"/>
+        <field name="state">new</field>
+    </record>
+</odoo>

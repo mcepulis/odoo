@@ -1,0 +1,48 @@
+<odoo>
+    <!-- Project Views -->
+    <record id="view_project_tree" model="ir.ui.view">
+        <field name="name">project.tree</field>
+        <field name="model">custom.project.management</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+   <record id="view_project_form" model="ir.ui.view">
+    <field name="name">project.form</field>
+    <field name="model">custom.project.management</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="task_ids">
+                        <tree>
+                            <field name="name"/>
+                            <field name="assigned_to"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+    <!-- Actions -->
+    <record id="action_project" model="ir.actions.act_window">
+        <field name="name">Projects</field>
+        <field name="res_model">custom.project.management</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_project_root" name="Projects"/>
+    <menuitem id="menu_project_management" name="Project Management" parent="menu_project_root"/>
+    <menuitem id="menu_project" name="Projects" parent="menu_project_management" action="action_project"/>
+</odoo>
