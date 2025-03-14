@@ -7,6 +7,7 @@
     'depends': ['base', 'mail'],
     'data': [
         'security/ir.model.access.csv',
+        'security/record_rules.xml',
         'views/project_views.xml',
         'views/task_views.xml',
         'views/task_wizard_views.xml',
