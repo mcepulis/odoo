@@ -27,37 +27,41 @@
                         <field name="state"/>
                     </group>
                 </sheet>
+                <!-- Add the chatter section -->
+                <div class="oe_chatter">
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
 
     <record id="view_task_kanban" model="ir.ui.view">
-    <field name="name">task.kanban</field>
-    <field name="model">custom.task.management</field>
-    <field name="arch" type="xml">
-        <kanban default_group_by="state">
-            <field name="name"/>
-            <field name="state"/>
-            <field name="assigned_to"/>
-            <templates>
-                <t t-name="kanban-box">
-                    <div class="oe_kanban_global_click">
-                        <div class="o_kanban_record_title">
-                            <strong><field name="name"/></strong>
+        <field name="name">task.kanban</field>
+        <field name="model">custom.task.management</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state">
+                <field name="name"/>
+                <field name="state"/>
+                <field name="assigned_to"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_record_title">
+                                <strong><field name="name"/></strong>
+                            </div>
+                            <div>
+                                Assigned to: <field name="assigned_to"/>
+                            </div>
+                            <div>
+                                Status: <field name="state"/>
+                            </div>
                         </div>
-                        <div>
-                            Assigned to: <field name="assigned_to"/>
-                        </div>
-                        <div>
-                            Status: <field name="state"/>
-                        </div>
-                    </div>
-                </t>
-            </templates>
-            <progressbar field="state" colors='{"new": "success", "in_progress": "warning", "done": "danger"}'/>
-        </kanban>
-    </field>
-</record>
+                    </t>
+                </templates>
+                <progressbar field="state" colors='{"new": "success", "in_progress": "warning", "done": "danger"}'/>
+            </kanban>
+        </field>
+    </record>
 
     <!-- Actions -->
     <record id="action_task" model="ir.actions.act_window">
@@ -67,7 +71,7 @@
         <field name="context">{}</field>
     </record>
 
-     <record id="action_task_report" model="ir.actions.report">
+    <record id="action_task_report" model="ir.actions.report">
         <field name="name">Task Report</field>
         <field name="model">custom.task.management</field>
         <field name="report_type">qweb-pdf</field>
