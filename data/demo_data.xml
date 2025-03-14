@@ -8,18 +8,18 @@
         <field name="name">Task 1</field>
         <field name="project_id" ref="demo_project_1"/>
         <field name="state">new</field>
-        <field name="assigned_to" ref="base.user_admin"/> <!-- Assign to an existing user -->
+        <field name="assigned_to" ref="base.user_admin"/> 
     </record>
     <record id="demo_task_2" model="custom.task.management">
         <field name="name">Task 2</field>
         <field name="project_id" ref="demo_project_1"/>
         <field name="state">in_progress</field>
-        <field name="assigned_to" ref="base.user_demo"/> <!-- Assign to another user -->
+        <field name="assigned_to" ref="base.user_demo"/> 
     </record>
     <record id="demo_task_3" model="custom.task.management">
         <field name="name">Task 3</field>
         <field name="project_id" ref="demo_project_1"/>
         <field name="state">done</field>
-        <field name="assigned_to" ref="base.user_admin"/> <!-- Assign to an existing user -->
+        <field name="assigned_to" ref="base.user_admin"/> 
     </record>
 </odoo>
