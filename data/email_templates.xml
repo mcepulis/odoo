@@ -1,0 +1,20 @@
+<odoo>
+    <!-- Email Template for Task Status Notification -->
+    <record id="task_status_notification_template" model="mail.template">
+        <field name="name">Task Status Notification</field>
+        <field name="model_id" ref="model_custom_task_management"/>
+        <field name="email_from">${object.create_uid.email or ''}</field>
+        <field name="email_to">${object.assigned_to.email or ''}</field>
+        <field name="subject">Task Status Update: ${object.name}</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Hello ${object.assigned_to.name},</p>
+                <p>The task <strong>${object.name}</strong> has been ${'created' if ctx.get('action') == 'created' else 'updated'}.</p>
+                <p>Status: <strong>${object.state}</strong></p>
+                <p>Description: ${object.description or 'No description provided.'}</p>
+                <p>Thank you,</p>
+                <p>${object.create_uid.name}</p>
+            ]]>
+        </field>
+    </record>
+</odoo>
