@@ -1,0 +1,34 @@
+<odoo>
+    <!-- Wizard Form -->
+    <record id="view_task_filter_wizard_form" model="ir.ui.view">
+        <field name="name">task.filter.wizard.form</field>
+        <field name="model">custom.task.filter.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="project_id"/>
+                        <field name="assigned_to"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <footer>
+                        <button string="Filter" type="object" class="btn-primary" name="action_filter_tasks"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Wizard Action -->
+    <record id="action_task_filter_wizard" model="ir.actions.act_window">
+        <field name="name">Filter Tasks</field>
+        <field name="res_model">custom.task.filter.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Wizard Menu Item -->
+    <menuitem id="menu_task_filter_wizard" name="Filter Tasks" parent="menu_project_management" action="action_task_filter_wizard"/>
+</odoo>
