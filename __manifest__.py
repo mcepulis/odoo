@@ -10,6 +10,7 @@
         'views/project_views.xml',
         'views/task_views.xml',
         'views/task_wizard_views.xml',
+        'reports/task_report_template.xml',
         'data/demo_data.xml',
     ],
     'installable': True,

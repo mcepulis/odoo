@@ -67,6 +67,16 @@
         <field name="context">{}</field>
     </record>
 
+     <record id="action_task_report" model="ir.actions.report">
+        <field name="name">Task Report</field>
+        <field name="model">custom.task.management</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">project_management.task_report_template</field>
+        <!-- Bind the report to the model -->
+        <field name="binding_model_id" ref="model_custom_task_management"/>
+        <field name="binding_type">report</field>
+    </record>
+
     <!-- Menu Items -->
     <menuitem id="menu_task" name="Tasks" parent="menu_project_management" action="action_task"/>
 </odoo>
