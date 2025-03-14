@@ -9,6 +9,7 @@
         'security/ir.model.access.csv',
         'views/project_views.xml',
         'views/task_views.xml',
+        'views/task_wizard_views.xml',
         'data/demo_data.xml',
     ],
     'installable': True,
