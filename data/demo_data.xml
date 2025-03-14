@@ -1,3 +1,4 @@
+<!-- task autocreation -->
 <odoo>
     <record id="demo_project_1" model="custom.project.management">
         <field name="name">Project Alpha</field>
