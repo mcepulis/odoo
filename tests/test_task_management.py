@@ -26,7 +26,7 @@ class TestTaskManagement(TransactionCase):
             'name': 'Test Task',
             'description': 'This is a test task.',
             'project_id': self.project.id,
-            'assigned_to': self.user_1.id,  # Assign a single user
+            'assigned_to': [(4, self.user_1.id), (4, self.user_2.id)], 
             'state': 'new',
         })
         
@@ -34,21 +34,23 @@ class TestTaskManagement(TransactionCase):
         self.assertEqual(task.name, 'Test Task')
         self.assertEqual(task.description, 'This is a test task.')
         self.assertEqual(task.project_id, self.project)
-        self.assertEqual(task.assigned_to, self.user_1)  # Verify the assigned user
+        self.assertIn(self.user_1, task.assigned_to)  
+        self.assertIn(self.user_2, task.assigned_to)
         self.assertEqual(task.state, 'new')
 
     def test_task_assignment(self):
-        """Test that a single employee can be assigned to a task."""
+        """Test that multiple employees can be assigned to a task."""
         task = self.env['custom.task.management'].create({
             'name': 'Test Task',
             'description': 'This is a test task.',
             'project_id': self.project.id,
-            'assigned_to': self.user_1.id,  # Assign a single user
+            'assigned_to': [(4, self.user_1.id), (4, self.user_2.id)],  
             'state': 'new',
         })
         
-        # Verify the assigned user
-        self.assertEqual(task.assigned_to, self.user_1)
+        # Verify the assigned users
+        self.assertIn(self.user_1, task.assigned_to)
+        self.assertIn(self.user_2, task.assigned_to)
 
     def test_task_state_transition(self):
         """Test that the task's state can be updated."""
@@ -56,7 +58,7 @@ class TestTaskManagement(TransactionCase):
             'name': 'Test Task',
             'description': 'This is a test task.',
             'project_id': self.project.id,
-            'assigned_to': self.user_1.id,  # Assign a single user
+            'assigned_to': [(4, self.user_1.id), (4, self.user_2.id)],  
             'state': 'new',
         })
         
