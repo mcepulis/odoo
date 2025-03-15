@@ -7,7 +7,7 @@
             <tree>
                 <field name="name"/>
                 <field name="project_id"/>
-                <field name="assigned_to"/>
+                <field name="assigned_to" widget="many2many_tags"/>  
                 <field name="state"/>
             </tree>
         </field>
@@ -23,11 +23,10 @@
                         <field name="name"/>
                         <field name="description"/>
                         <field name="project_id"/>
-                        <field name="assigned_to"/>
+                        <field name="assigned_to" widget="many2many_tags"/>  
                         <field name="state"/>
                     </group>
                 </sheet>
-                <!-- Add the chatter section -->
                 <div class="oe_chatter">
                     <field name="message_ids"/>
                 </div>
@@ -42,7 +41,7 @@
             <kanban default_group_by="state">
                 <field name="name"/>
                 <field name="state"/>
-                <field name="assigned_to"/>
+                <field name="assigned_to" widget="many2many_tags"/> 
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
@@ -50,7 +49,7 @@
                                 <strong><field name="name"/></strong>
                             </div>
                             <div>
-                                Assigned to: <field name="assigned_to"/>
+                                Assigned to: <field name="assigned_to" widget="many2many_tags"/>  
                             </div>
                             <div>
                                 Status: <field name="state"/>
@@ -76,7 +75,6 @@
         <field name="model">custom.task.management</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">project_management.task_report_template</field>
-        <!-- Bind the report to the model -->
         <field name="binding_model_id" ref="model_custom_task_management"/>
         <field name="binding_type">report</field>
     </record>
